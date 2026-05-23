@@ -18,16 +18,15 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #2c1e1a; /* тёплый глубокий фон */
-            color: #fff4ea;
+            background-color: #181e21; /* тёмно-серый общий фон */
+            color: #e0e0e0;
         }
 
         .page-home {
             max-width: 600px;
             margin: 0 auto;
-            background: linear-gradient(145deg, #2f221d 0%, #241814 100%);
+            background-color: #1a1d1f; /* тёмно-серый */
             min-height: 100vh;
-            box-shadow: 0 0 30px rgba(0,0,0,0.3);
         }
 
         /* Прямоугольная обложка */
@@ -39,11 +38,10 @@
             max-height: 300px;
         }
 
-        /* Заголовок — тёплый градиент */
+        /* Заголовок — оранжевый (оставлен только здесь) */
         .vcard-header {
             background: linear-gradient(135deg, #d97a3c 0%, #b85c28 100%);
             padding: 20px 0;
-            border-bottom: 1px solid rgba(255,200,150,0.3);
         }
 
         .event-content-container {
@@ -66,29 +64,39 @@
             font-weight: 500;
         }
 
-        /* Кнопки соцсетей — тёплая карточка */
+        /* Область с кнопками */
         .event-body {
             padding: 20px;
         }
 
+        /* Фон ЗА кнопками (контейнер) — тёмно-серый (как общий фон) */
         .channel-container {
-            display: flex;
-            align-items: center;
-            background: linear-gradient(115deg, #3e2c25 0%, #33231d 100%);
-            border-radius: 24px;
-            padding: 10px 20px;
-            margin-bottom: 16px;
-            text-decoration: none;
-            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
-            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
-            border: 1px solid rgba(230, 150, 100, 0.3);
-        }
+    background-color: #3a3a3d; /* тёплый серый */
+    border-radius: 24px;
+    padding: 0;
+    margin-bottom: 16px;
+    text-decoration: none;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
 
         .channel-container:hover {
-            transform: translateY(-3px);
-            background: linear-gradient(115deg, #4e3830 0%, #3f2c24 100%);
-            box-shadow: 0 12px 18px rgba(0,0,0,0.25);
-            border-color: rgba(230, 150, 100, 0.7);
+            transform: translateY(-2px);
+        }
+
+        /* Внутренний блок кнопки — тёплый серый фон */
+        .channel-inner {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    background: #1a1d1f; /* тёмно-серый (как общий фон) */
+    border-radius: 24px;
+    padding: 10px 20px;
+    transition: background 0.2s;
+    cursor: pointer;
+}
+
+        .channel-container:hover .channel-inner {
+            background: #25282b; /* чуть светлее при наведении */
         }
 
         /* Общий контейнер иконки */
@@ -102,13 +110,11 @@
             flex-shrink: 0;
         }
 
-        /* Круглые иконки для Telegram и WhatsApp */
         .channel-icon.rounded {
             border-radius: 50%;
             background-color: transparent;
         }
 
-        /* Квадратные с закруглением для VK и MAX */
         .channel-icon.square {
             border-radius: 14px;
             background-color: transparent;
@@ -118,25 +124,23 @@
             width: 48px;
             height: 48px;
             display: block;
-            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
         }
 
-        /* Для Telegram и WhatsApp — круги в тёплой стилистике не меняем, оставляем соц. цвета, но фон карточки уже тёплый */
         .channel-name {
             font-size: 19px;
             font-weight: 600;
-            color: #fff0e0;
+            color: #f0f0f0;
             letter-spacing: 0.3px;
         }
 
         .channel-label {
             font-size: 13px;
-            color: #e6c8b0;
+            color: #c0c0c0;
             margin-top: 4px;
             font-weight: 400;
         }
 
-        /* Кнопка Share — тёплая, приятная */
+        /* Кнопка Share — оранжевая (как и просили оставить оранжевый фон за кнопкой) */
         .share-container {
             margin-top: 36px;
             text-align: center;
@@ -146,7 +150,6 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 12px;
             background: linear-gradient(105deg, #ed8a4a, #cf6729);
             padding: 14px 32px;
             border-radius: 60px;
@@ -157,9 +160,9 @@
             cursor: pointer;
             transition: all 0.2s ease;
             box-shadow: 0 8px 16px rgba(0,0,0,0.25);
-            backdrop-filter: blur(2px);
         }
 
+        /* Убираем иконку полностью — только текст */
         .fab:hover {
             background: linear-gradient(105deg, #f59756, #e0702e);
             transform: translateY(-2px);
@@ -170,11 +173,7 @@
             transform: translateY(1px);
         }
 
-        .icon-fab-share:before {
-            content: "📤";
-            font-size: 20px;
-            margin-right: 0px;
-        }
+        /* Больше нет псевдоэлемента с иконкой */
 
         .copy-message {
             position: fixed;
@@ -192,7 +191,6 @@
             pointer-events: none;
             z-index: 1000;
             box-shadow: 0 4px 14px rgba(0,0,0,0.3);
-            backdrop-filter: blur(4px);
         }
 
         .copy-message.show {
@@ -201,7 +199,7 @@
 
         @media (max-width: 480px) {
             .event-title { font-size: 26px; }
-            .channel-container { padding: 8px 18px; margin-bottom: 14px; }
+            .channel-inner { padding: 8px 18px; }
             .channel-icon svg { width: 44px; height: 44px; }
             .cover-image { max-height: 210px; }
             .fab { padding: 12px 28px; font-size: 16px; }
@@ -221,118 +219,76 @@
         </div>
 
         <div class="event-body">
-            <!-- Telegram (круглая иконка) -->
+            <!-- Telegram -->
             <a href="https://t.me/rostislav_yarkom" target="_blank" class="channel-container">
-                <div class="channel-icon rounded telegram">
-<svg
-   version="1.1"
-   id="svg1"
-   width="64"
-   height="64"
-   viewBox="0 0 64 64"
-   sodipodi:docname="icons8-телеграм-48.png"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:xlink="http://www.w3.org/1999/xlink"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg">
-  <defs
-     id="defs1" />
-  <sodipodi:namedview
-     id="namedview1"
-     pagecolor="#ffffff"
-     bordercolor="#000000"
-     borderopacity="0.25"
-     inkscape:showpageshadow="2"
-     inkscape:pageopacity="0.0"
-     inkscape:pagecheckerboard="0"
-     inkscape:deskcolor="#d1d1d1">
-    <inkscape:page
-       x="0"
-       y="0"
-       width="64"
-       height="64"
-       id="page2"
-       margin="0"
-       bleed="0" />
-  </sodipodi:namedview>
-  <g
-     inkscape:groupmode="layer"
-     inkscape:label="Image"
-     id="g1">
-    <image
-       width="64"
-       height="64"
-       preserveAspectRatio="none"
-       xlink:href="data:image/png;base64,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&#10;fhzsK9wAAAAASUVORK5CYII=&#10;"
-       id="image1" />
-  </g>
-</svg>
-                </div>
-                <div>
-                    <div class="channel-name">Telegram</div>
-                    <div class="channel-label">@rostislav_yarkom</div>
+                <div class="channel-inner">
+                    <div class="channel-icon rounded telegram">
+                        <svg version="1.1" width="64" height="64" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                            <image width="64" height="64" preserveAspectRatio="none" xlink:href="data:image/png;base64,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 fhzsK9wAAAAASUVORK5CYII="/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="channel-name">Telegram</div>
+                        <div class="channel-label">@rostislav_yarkom</div>
+                    </div>
                 </div>
             </a>
 
-            <!-- WhatsApp (круглая иконка) -->
+            <!-- WhatsApp -->
             <a href="https://wa.me/79603533159" target="_blank" class="channel-container">
-                <div class="channel-icon rounded whatsapp">
-                    <svg xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 48 48" width="48px" height="48px" fill-rule="evenodd" clip-rule="evenodd"><path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"/><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"/><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"/><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"/><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"/></svg>
-                </div>
-                <div>
-                    <div class="channel-name">WhatsApp</div>
-                    <div class="channel-label">+7 960 353-31-59</div>
+                <div class="channel-inner">
+                    <div class="channel-icon rounded whatsapp">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48" width="48px" height="48px" fill-rule="evenodd" clip-rule="evenodd"><path fill="#fff" d="M4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98c-0.001,0,0,0,0,0h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303z"/><path fill="#fff" d="M4.868,43.803c-0.132,0-0.26-0.052-0.355-0.148c-0.125-0.127-0.174-0.312-0.127-0.483l2.639-9.636c-1.636-2.906-2.499-6.206-2.497-9.556C4.532,13.238,13.273,4.5,24.014,4.5c5.21,0.002,10.105,2.031,13.784,5.713c3.679,3.683,5.704,8.577,5.702,13.781c-0.004,10.741-8.746,19.48-19.486,19.48c-3.189-0.001-6.344-0.788-9.144-2.277l-9.875,2.589C4.953,43.798,4.911,43.803,4.868,43.803z"/><path fill="#cfd8dc" d="M24.014,5c5.079,0.002,9.845,1.979,13.43,5.566c3.584,3.588,5.558,8.356,5.556,13.428c-0.004,10.465-8.522,18.98-18.986,18.98h-0.008c-3.177-0.001-6.3-0.798-9.073-2.311L4.868,43.303l2.694-9.835C5.9,30.59,5.026,27.324,5.027,23.979C5.032,13.514,13.548,5,24.014,5 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974C24.014,42.974,24.014,42.974,24.014,42.974 M24.014,4C24.014,4,24.014,4,24.014,4C12.998,4,4.032,12.962,4.027,23.979c-0.001,3.367,0.849,6.685,2.461,9.622l-2.585,9.439c-0.094,0.345,0.002,0.713,0.254,0.967c0.19,0.192,0.447,0.297,0.711,0.297c0.085,0,0.17-0.011,0.254-0.033l9.687-2.54c2.828,1.468,5.998,2.243,9.197,2.244c11.024,0,19.99-8.963,19.995-19.98c0.002-5.339-2.075-10.359-5.848-14.135C34.378,6.083,29.357,4.002,24.014,4L24.014,4z"/><path fill="#40c351" d="M35.176,12.832c-2.98-2.982-6.941-4.625-11.157-4.626c-8.704,0-15.783,7.076-15.787,15.774c-0.001,2.981,0.833,5.883,2.413,8.396l0.376,0.597l-1.595,5.821l5.973-1.566l0.577,0.342c2.422,1.438,5.2,2.198,8.032,2.199h0.006c8.698,0,15.777-7.077,15.78-15.776C39.795,19.778,38.156,15.814,35.176,12.832z"/><path fill="#fff" fill-rule="evenodd" d="M19.268,16.045c-0.355-0.79-0.729-0.806-1.068-0.82c-0.277-0.012-0.593-0.011-0.909-0.011c-0.316,0-0.83,0.119-1.265,0.594c-0.435,0.475-1.661,1.622-1.661,3.956c0,2.334,1.7,4.59,1.937,4.906c0.237,0.316,3.282,5.259,8.104,7.161c4.007,1.58,4.823,1.266,5.693,1.187c0.87-0.079,2.807-1.147,3.202-2.255c0.395-1.108,0.395-2.057,0.277-2.255c-0.119-0.198-0.435-0.316-0.909-0.554s-2.807-1.385-3.242-1.543c-0.435-0.158-0.751-0.237-1.068,0.238c-0.316,0.474-1.225,1.543-1.502,1.859c-0.277,0.317-0.554,0.357-1.028,0.119c-0.474-0.238-2.002-0.738-3.815-2.354c-1.41-1.257-2.362-2.81-2.639-3.285c-0.277-0.474-0.03-0.731,0.208-0.968c0.213-0.213,0.474-0.554,0.712-0.831c0.237-0.277,0.316-0.475,0.474-0.791c0.158-0.317,0.079-0.594-0.04-0.831C20.612,19.329,19.69,16.983,19.268,16.045z" clip-rule="evenodd"/></svg>
+                    </div>
+                    <div>
+                        <div class="channel-name">WhatsApp</div>
+                        <div class="channel-label">+7 960 353-31-59</div>
+                    </div>
                 </div>
             </a>
 
-            <!-- VKontakte (квадратная иконка с закруглёнными краями) -->
+            <!-- VKontakte -->
             <a href="https://vk.com/rostislavyarkom" target="_blank" class="channel-container">
-                <div class="channel-icon square">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
-                        <path fill="#1976d2" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5 V37z"/>
-                        <path fill="#fff" d="M35.937,18.041c0.046-0.151,0.068-0.291,0.062-0.416C35.984,17.263,35.735,17,35.149,17h-2.618 c-0.661,0-0.966,0.4-1.144,0.801c0,0-1.632,3.359-3.513,5.574c-0.61,0.641-0.92,0.625-1.25,0.625C26.447,24,26,23.786,26,23.199 v-5.185C26,17.32,25.827,17,25.268,17h-4.649C20.212,17,20,17.32,20,17.641c0,0.667,0.898,0.827,1,2.696v3.623 C21,24.84,20.847,25,20.517,25c-0.89,0-2.642-3-3.815-6.932C16.448,17.294,16.194,17,15.533,17h-2.643 C12.127,17,12,17.374,12,17.774c0,0.721,0.6,4.619,3.875,9.101C18.25,30.125,21.379,32,24.149,32c1.678,0,1.85-0.427,1.85-1.094 v-2.972C26,27.133,26.183,27,26.717,27c0.381,0,1.158,0.25,2.658,2c1.73,2.018,2.044,3,3.036,3h2.618 c0.608,0,0.957-0.255,0.971-0.75c0.003-0.126-0.015-0.267-0.056-0.424c-0.194-0.576-1.084-1.984-2.194-3.326 c-0.615-0.743-1.222-1.479-1.501-1.879C32.062,25.36,31.991,25.176,32,25c0.009-0.185,0.105-0.361,0.249-0.607 C32.223,24.393,35.607,19.642,35.937,18.041z"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="channel-name">VKontakte</div>
-                    <div class="channel-label">rostislavyarkom</div>
+                <div class="channel-inner">
+                    <div class="channel-icon square">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 48 48">
+                            <path fill="#1976d2" d="M42,37c0,2.762-2.238,5-5,5H11c-2.761,0-5-2.238-5-5V11c0-2.762,2.239-5,5-5h26c2.762,0,5,2.238,5,5 V37z"/>
+                            <path fill="#fff" d="M35.937,18.041c0.046-0.151,0.068-0.291,0.062-0.416C35.984,17.263,35.735,17,35.149,17h-2.618 c-0.661,0-0.966,0.4-1.144,0.801c0,0-1.632,3.359-3.513,5.574c-0.61,0.641-0.92,0.625-1.25,0.625C26.447,24,26,23.786,26,23.199 v-5.185C26,17.32,25.827,17,25.268,17h-4.649C20.212,17,20,17.32,20,17.641c0,0.667,0.898,0.827,1,2.696v3.623 C21,24.84,20.847,25,20.517,25c-0.89,0-2.642-3-3.815-6.932C16.448,17.294,16.194,17,15.533,17h-2.643 C12.127,17,12,17.374,12,17.774c0,0.721,0.6,4.619,3.875,9.101C18.25,30.125,21.379,32,24.149,32c1.678,0,1.85-0.427,1.85-1.094 v-2.972C26,27.133,26.183,27,26.717,27c0.381,0,1.158,0.25,2.658,2c1.73,2.018,2.044,3,3.036,3h2.618 c0.608,0,0.957-0.255,0.971-0.75c0.003-0.126-0.015-0.267-0.056-0.424c-0.194-0.576-1.084-1.984-2.194-3.326 c-0.615-0.743-1.222-1.479-1.501-1.879C32.062,25.36,31.991,25.176,32,25c0.009-0.185,0.105-0.361,0.249-0.607 C32.223,24.393,35.607,19.642,35.937,18.041z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="channel-name">VKontakte</div>
+                        <div class="channel-label">rostislavyarkom</div>
+                    </div>
                 </div>
             </a>
 
-            <!-- MAX (квадратная иконка с закруглёнными краями, оригинальный градиент, тёплое окружение) -->
+            <!-- MAX -->
             <a href="https://max.ru/u/f9LHodD0cOKFW_rFgBiBFIQhpFevtsfprdDgTQwaVyYDt_6wsfhufDaDmhg" target="_blank" class="channel-container">
-                <div class="channel-icon square">
-                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" style="transform: scale(0.8);">
-                        <defs>
-                            <linearGradient id="b">
-                                <stop offset="0" stop-color="#00f"/>
-                                <stop offset="1" stop-opacity="0"/>
-                            </linearGradient>
-                            <linearGradient id="a">
-                                <stop offset="0" stop-color="#4cf"/>
-                                <stop offset=".662" stop-color="#53e"/>
-                                <stop offset="1" stop-color="#93d"/>
-                            </linearGradient>
-                            <linearGradient id="c" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#a"/>
-                            <radialGradient id="d" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3)scale(2.42703433 1)" gradientUnits="userSpaceOnUse" href="#b"/>
-                        </defs>
-                        <rect width="1000" height="1000" fill="url(#c)" ry="249.681"/>
-                        <rect width="1000" height="1000" fill="url(#d)" ry="249.681"/>
-                        <path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/>
-                    </svg>
-                </div>
-                <div>
-                    <div class="channel-name">MAX</div>
-                    <div class="channel-label">Написать в MAX</div>
+                <div class="channel-inner">
+                    <div class="channel-icon square">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" style="transform: scale(0.8);">
+                            <defs>
+                                <linearGradient id="b"><stop offset="0" stop-color="#00f"/><stop offset="1" stop-opacity="0"/></linearGradient>
+                                <linearGradient id="a"><stop offset="0" stop-color="#4cf"/><stop offset=".662" stop-color="#53e"/><stop offset="1" stop-color="#93d"/></linearGradient>
+                                <linearGradient id="c" x1="117.847" x2="1000" y1="760.536" y2="500" gradientUnits="userSpaceOnUse" href="#a"/>
+                                <radialGradient id="d" cx="-87.392" cy="1166.116" r="500" fx="-87.392" fy="1166.116" gradientTransform="rotate(51.356 1551.478 559.3)scale(2.42703433 1)" gradientUnits="userSpaceOnUse" href="#b"/>
+                            </defs>
+                            <rect width="1000" height="1000" fill="url(#c)" ry="249.681"/>
+                            <rect width="1000" height="1000" fill="url(#d)" ry="249.681"/>
+                            <path fill="#fff" fill-rule="evenodd" d="M508.211 878.328c-75.007 0-109.864-10.95-170.453-54.75-38.325 49.275-159.686 87.783-164.979 21.9 0-49.456-10.95-91.248-23.36-136.873-14.782-56.21-31.572-118.807-31.572-209.508 0-216.626 177.754-379.597 388.357-379.597 210.785 0 375.947 171.001 375.947 381.604.707 207.346-166.595 376.118-373.94 377.224m3.103-571.585c-102.564-5.292-182.499 65.7-200.201 177.024-14.6 92.162 11.315 204.398 33.397 210.238 10.585 2.555 37.23-18.98 53.837-35.587a189.8 189.8 0 0 0 92.71 33.032c106.273 5.112 197.08-75.794 204.215-181.95 4.154-106.382-77.67-196.486-183.958-202.574Z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <div class="channel-name">MAX</div>
+                        <div class="channel-label">Написать в MAX</div>
+                    </div>
                 </div>
             </a>
 
-            <!-- Кнопка Share -->
+            <!-- Кнопка Share — оранжевая, без иконки -->
             <div class="share-container">
-                <button class="fab" id="shareButton">
-                    <i class="icon-fab-share"></i> Поделиться страницей
-                </button>
+                <button class="fab" id="shareButton">Поделиться страницей</button>
             </div>
         </div>
     </div>
@@ -363,7 +319,6 @@
             textarea.select();
             document.execCommand('copy');
             document.body.removeChild(textarea);
-
             copyMsg.classList.add('show');
             setTimeout(() => copyMsg.classList.remove('show'), 2000);
         }
