@@ -18,15 +18,16 @@
 
         body {
             font-family: 'Roboto', sans-serif;
-            background-color: #181e21;
-            color: #fff;
+            background-color: #2c1e1a; /* тёплый глубокий фон */
+            color: #fff4ea;
         }
 
         .page-home {
             max-width: 600px;
             margin: 0 auto;
-            background-color: #181e21;
+            background: linear-gradient(145deg, #2f221d 0%, #241814 100%);
             min-height: 100vh;
+            box-shadow: 0 0 30px rgba(0,0,0,0.3);
         }
 
         /* Прямоугольная обложка */
@@ -38,10 +39,11 @@
             max-height: 300px;
         }
 
-        /* Заголовок */
+        /* Заголовок — тёплый градиент */
         .vcard-header {
-            background: linear-gradient(135deg, #181e21 0%, #2a2f33 100%);
+            background: linear-gradient(135deg, #d97a3c 0%, #b85c28 100%);
             padding: 20px 0;
+            border-bottom: 1px solid rgba(255,200,150,0.3);
         }
 
         .event-content-container {
@@ -52,16 +54,19 @@
         .event-title {
             font-size: 28px;
             font-weight: 700;
-            color: #fff;
+            color: #fff2e0;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            letter-spacing: 1px;
         }
 
         .event-teaser {
             font-size: 16px;
-            color: #ccc;
+            color: #ffe1c4;
             margin-top: 8px;
+            font-weight: 500;
         }
 
-        /* Кнопки соцсетей */
+        /* Кнопки соцсетей — тёплая карточка */
         .event-body {
             padding: 20px;
         }
@@ -69,27 +74,31 @@
         .channel-container {
             display: flex;
             align-items: center;
-            background-color: #2a2f33;
-            border-radius: 16px;
-            padding: 8px 20px;
-            margin-bottom: 12px;
+            background: linear-gradient(115deg, #3e2c25 0%, #33231d 100%);
+            border-radius: 24px;
+            padding: 10px 20px;
+            margin-bottom: 16px;
             text-decoration: none;
-            transition: transform 0.2s, background-color 0.2s;
+            transition: transform 0.2s, background 0.2s, box-shadow 0.2s;
+            box-shadow: 0 6px 12px rgba(0,0,0,0.2);
+            border: 1px solid rgba(230, 150, 100, 0.3);
         }
 
         .channel-container:hover {
-            transform: translateY(-2px);
-            background-color: #3a3f44;
+            transform: translateY(-3px);
+            background: linear-gradient(115deg, #4e3830 0%, #3f2c24 100%);
+            box-shadow: 0 12px 18px rgba(0,0,0,0.25);
+            border-color: rgba(230, 150, 100, 0.7);
         }
 
         /* Общий контейнер иконки */
         .channel-icon {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-right: 15px;
+            margin-right: 18px;
             flex-shrink: 0;
         }
 
@@ -101,37 +110,35 @@
 
         /* Квадратные с закруглением для VK и MAX */
         .channel-icon.square {
-            border-radius: 12px;
+            border-radius: 14px;
             background-color: transparent;
         }
 
         .channel-icon svg {
-            width: 44px;
-            height: 44px;
+            width: 48px;
+            height: 48px;
             display: block;
+            filter: drop-shadow(0 2px 3px rgba(0,0,0,0.2));
         }
 
-        /* Для Telegram и WhatsApp — цветные круги */
-        .channel-icon.telegram svg circle,
-        .channel-icon.whatsapp svg circle {
-            fill: #26A5E4;
-        }
-
+        /* Для Telegram и WhatsApp — круги в тёплой стилистике не меняем, оставляем соц. цвета, но фон карточки уже тёплый */
         .channel-name {
-            font-size: 18px;
-            font-weight: 500;
-            color: #fff;
+            font-size: 19px;
+            font-weight: 600;
+            color: #fff0e0;
+            letter-spacing: 0.3px;
         }
 
         .channel-label {
             font-size: 13px;
-            color: #aaa;
-            margin-top: 2px;
+            color: #e6c8b0;
+            margin-top: 4px;
+            font-weight: 400;
         }
 
-        /* Кнопка Share */
+        /* Кнопка Share — тёплая, приятная */
         .share-container {
-            margin-top: 30px;
+            margin-top: 36px;
             text-align: center;
         }
 
@@ -139,25 +146,34 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 8px;
-            background-color: #0ec82a;
-            padding: 12px 24px;
-            border-radius: 50px;
+            gap: 12px;
+            background: linear-gradient(105deg, #ed8a4a, #cf6729);
+            padding: 14px 32px;
+            border-radius: 60px;
             color: white;
-            font-weight: 500;
+            font-weight: 600;
+            font-size: 18px;
             border: none;
             cursor: pointer;
-            transition: background 0.2s, transform 0.2s;
+            transition: all 0.2s ease;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.25);
+            backdrop-filter: blur(2px);
         }
 
         .fab:hover {
-            background-color: #0ab022;
+            background: linear-gradient(105deg, #f59756, #e0702e);
             transform: translateY(-2px);
+            box-shadow: 0 12px 20px rgba(0,0,0,0.3);
+        }
+
+        .fab:active {
+            transform: translateY(1px);
         }
 
         .icon-fab-share:before {
             content: "📤";
-            margin-right: 5px;
+            font-size: 20px;
+            margin-right: 0px;
         }
 
         .copy-message {
@@ -165,15 +181,18 @@
             bottom: 30px;
             left: 50%;
             transform: translateX(-50%);
-            background-color: #0ec82a;
-            color: white;
-            padding: 10px 20px;
-            border-radius: 30px;
-            font-size: 14px;
+            background-color: #e07c3c;
+            color: #fff2e4;
+            padding: 10px 24px;
+            border-radius: 40px;
+            font-size: 15px;
+            font-weight: 500;
             opacity: 0;
             transition: opacity 0.3s;
             pointer-events: none;
             z-index: 1000;
+            box-shadow: 0 4px 14px rgba(0,0,0,0.3);
+            backdrop-filter: blur(4px);
         }
 
         .copy-message.show {
@@ -181,10 +200,11 @@
         }
 
         @media (max-width: 480px) {
-            .event-title { font-size: 24px; }
-            .channel-container { padding: 6px 16px; }
-            .channel-icon svg { width: 40px; height: 40px; }
-            .cover-image { max-height: 200px; }
+            .event-title { font-size: 26px; }
+            .channel-container { padding: 8px 18px; margin-bottom: 14px; }
+            .channel-icon svg { width: 44px; height: 44px; }
+            .cover-image { max-height: 210px; }
+            .fab { padding: 12px 28px; font-size: 16px; }
         }
     </style>
 </head>
@@ -244,7 +264,7 @@
        width="64"
        height="64"
        preserveAspectRatio="none"
-       xlink:href="data:image/png;base64,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&#10;fhzsK9wAAAAASUVORK5CYII=&#10;"
+       xlink:href="data:image/png;base64,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&#10;fhzsK9wAAAAASUVORK5CYII=&#10;"
        id="image1" />
   </g>
 </svg>
@@ -280,8 +300,7 @@
                 </div>
             </a>
 
-
-                        <!-- MAX (квадратная иконка с закруглёнными краями, оригинальный градиент) -->
+            <!-- MAX (квадратная иконка с закруглёнными краями, оригинальный градиент, тёплое окружение) -->
             <a href="https://max.ru/u/f9LHodD0cOKFW_rFgBiBFIQhpFevtsfprdDgTQwaVyYDt_6wsfhufDaDmhg" target="_blank" class="channel-container">
                 <div class="channel-icon square">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" style="transform: scale(0.8);">
